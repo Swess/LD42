@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Core;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Tilemaps;
 
 public class FireLogic : MonoBehaviour {
@@ -35,11 +37,6 @@ public class FireLogic : MonoBehaviour {
                 SpreadAt(tilemapPos + new Vector3Int(-1, 0,  0)); // Left
                 SpreadAt(tilemapPos + new Vector3Int(0,  1,  0)); // Up
                 SpreadAt(tilemapPos + new Vector3Int(0,  -1, 0)); // Down
-
-//                SpreadAt(tilemapPos + new Vector3Int(1,  1,  0)); // top-Right
-//                SpreadAt(tilemapPos + new Vector3Int(-1, 1,  0)); // Top-Left
-//                SpreadAt(tilemapPos + new Vector3Int(-1, -1, 0)); // Bottom-left
-//                SpreadAt(tilemapPos + new Vector3Int(1,  -1, 0)); // Bottom-Right
             }
         }
     }
@@ -63,8 +60,9 @@ public class FireLogic : MonoBehaviour {
     }
 
 
-//    void OnDestroy() {
-//        parentTilemap.SetTile(tilemapPos, null);
-//    }
+    void OnDestroy() {
+        GameController.Instance.score += 1;
+        GameController.Instance.onScoring.Invoke();
+    }
 
 }

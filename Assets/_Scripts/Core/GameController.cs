@@ -1,13 +1,18 @@
 using System;
 using Core.Inputs;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 namespace Core {
     public class GameController : MonoBehaviour {
 
+        public int score = 0;
+
         public ContextualInputsState menuInputsContext;
         public ContextualInputsState gameplayInputsContext;
+
+        [HideInInspector] public UnityEvent onScoring;
 
         private static GameController _instance; // Singleton instance
 
