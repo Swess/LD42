@@ -1,4 +1,5 @@
-﻿using Mechanics;
+﻿using Core;
+using Mechanics;
 using UnityEngine;
 using Rewired;
 
@@ -61,6 +62,20 @@ namespace Entities.Player {
             }
         }
 
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="damager"></param>
+        /// <param name="damageable"></param>
+        public void OnDie(Damager damager, Damageable damageable) {
+            GameController.Instance.actionsMapsHelper.DisableMap("Gameplay");
+
+            // Trigger animation here
+
+            // After animation :
+            GameController.Instance.SceneController.FadeAndLoadScene("MainMenu");
+        }
 
         public Damageable GetDamageable() { return _damageable; }
 
