@@ -15,6 +15,7 @@ public class FireLogic : MonoBehaviour {
     void Start() {
         StartCoroutine(Spread());
 
+        // Grab current tilemap position
         tilemapPos = new Vector3Int(
             Mathf.FloorToInt(transform.position.x),
             Mathf.FloorToInt(transform.position.y),

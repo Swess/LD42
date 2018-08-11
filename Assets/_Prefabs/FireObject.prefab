@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5111345802982269151}
   - component: {fileID: 5111345802982269150}
   - component: {fileID: 3312452627625949329}
+  - component: {fileID: 8006431570548442219}
   m_Layer: 0
   m_Name: FireObject
   m_TagString: Untagged
@@ -83,7 +84,24 @@ MonoBehaviour:
   parentTilemap: {fileID: 0}
   tilemapPos: {x: 0, y: 0, z: 0}
   spreadTile: {fileID: 11400000, guid: ce6880463d54fe742bf7dddbcb097ebe, type: 2}
-  spreadAfter: 2
+  spreadAfter: 4
+--- !u!111 &8006431570548442219
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5111345802982269149}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 9a1cb50e61b656a418214f4da173bb42, type: 2}
+  m_Animations:
+  - {fileID: 0}
+  - {fileID: 7400000, guid: 9a1cb50e61b656a418214f4da173bb42, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &5111345803434894754
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,11 +128,11 @@ Transform:
   m_GameObject: {fileID: 5111345803434894754}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.088419564, y: 0.088419564, z: 0.088419564}
   m_Children: []
   m_Father: {fileID: 5111345802982269151}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 3.7037044}
 --- !u!212 &244219526
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -151,7 +169,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d173cdca8d37fc54c83a9997bb1308a1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d62cf11dab9016c459560f181123acd6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
