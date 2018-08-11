@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Core;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -57,8 +58,9 @@ namespace Items.Weapons {
         /// </summary>
         /// <param name="dir"></param>
         protected override void OnUse(Vector3 dir) {
-            if ( usageSound )
-                _audioSource.PlayOneShot(usageSound);
+            if ( usageSound ) {
+                GameController.Instance.gameObject.GetComponent<AudioSource>().PlayOneShot(usageSound);
+            }
 
             inCooldown     = true;
             onCooldownBegin.Invoke();
