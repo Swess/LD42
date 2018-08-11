@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Mechanics;
+using UnityEngine;
 using Rewired;
 
 namespace Entities.Player {
@@ -8,7 +9,6 @@ namespace Entities.Player {
         [PlayerIdProperty(typeof(RewiredConsts.Player))]
         public int player;
 
-        public                float health            = 100f;
         public                float accelerationSpeed = 10f;
         public                float maxVelocity       = 10f;
         [Range(0, 20)] public float frictionFactor    = 4f;
@@ -16,6 +16,7 @@ namespace Entities.Player {
 
         private Animator    _animator;
         private Rigidbody2D _rb;
+        private Damageable  _damageable;
 
         public Rewired.Player PlayerInputs { get; protected set; }
 
@@ -24,8 +25,9 @@ namespace Entities.Player {
 
 
         protected void Awake() {
-            _animator = GetComponent<Animator>();
-            _rb       = GetComponent<Rigidbody2D>();
+            _animator   = GetComponent<Animator>();
+            _rb         = GetComponent<Rigidbody2D>();
+            _damageable = GetComponent<Damageable>();
 
             PlayerInputs = ReInput.players.GetPlayer(player); // Get the MainPlayer's inputs
         }
@@ -58,6 +60,9 @@ namespace Entities.Player {
                 _rb.velocity = _rb.velocity.normalized * maxVelocity;
             }
         }
+
+
+        public Damageable GetDamageable() { return _damageable; }
 
     }
 }
