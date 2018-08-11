@@ -11,6 +11,8 @@ public class FireLogic : MonoBehaviour {
     public FireTile spreadTile;
     public float    spreadAfter = 1f;
 
+    public float timeSoundDelay = 1f;
+    private float _timer = 0.99f;
 
     void Start() {
         StartCoroutine(Spread());
@@ -48,6 +50,16 @@ public class FireLogic : MonoBehaviour {
         if ( !tile ) {
             parentTilemap.SetTile(pos, spreadTile);
         }
+    }
+
+
+    public void PlayOnce() {
+        if ( _timer > timeSoundDelay ) {
+            GetComponent<AudioSource>().Play();
+            _timer = 0;
+        }
+
+        _timer += Time.deltaTime;
     }
 
 }

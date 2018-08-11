@@ -152,7 +152,7 @@ GameObject:
   m_Component:
   - component: {fileID: 116167232}
   - component: {fileID: 116167233}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ItemHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7184,7 +7184,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1550498285}
   - component: {fileID: 1550498286}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WalkingAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7312,7 +7312,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1669642089}
   - component: {fileID: 1669642090}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7744,7 +7744,7 @@ GameObject:
   - component: {fileID: 2098213719}
   - component: {fileID: 2098213721}
   - component: {fileID: 2098213723}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
