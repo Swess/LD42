@@ -16,6 +16,8 @@ namespace Items.Weapons {
 
             GameObject obj = Instantiate(projectile, transform.position, Quaternion.identity);
             Rigidbody2D objRb = obj.GetComponent<Rigidbody2D>();
+
+            objRb.velocity = owner.GetComponent<Rigidbody2D>().velocity;
             objRb.AddForce( dir * projectileSpeed, ForceMode2D.Impulse );
 
             // Use once Only

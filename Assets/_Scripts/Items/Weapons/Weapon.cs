@@ -20,7 +20,7 @@ namespace Items.Weapons {
         protected bool        inCooldown = false;
         private   AudioSource _audioSource;
         private   float       _cooldownTimer;
-        private   float       _activationCooldown = 0.4f; // Activation delay
+        private   float       _activationCooldown = 0.05f; // Activation delay
 
         [HideInInspector] public UnityEvent onCooldownBegin;
         [HideInInspector] public UnityEvent onCooldownDone;

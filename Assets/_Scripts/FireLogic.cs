@@ -60,7 +60,7 @@ public class FireLogic : MonoBehaviour {
     }
 
 
-    void OnDestroy() {
+    public void AddScore() {
         GameController.Instance.score += 1;
         GameController.Instance.onScoring.Invoke();
     }

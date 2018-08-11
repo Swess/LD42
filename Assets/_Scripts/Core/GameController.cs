@@ -11,6 +11,7 @@ namespace Core {
 
         public ContextualInputsState menuInputsContext;
         public ContextualInputsState gameplayInputsContext;
+        public BestScoreSave         saveFile;
 
         [HideInInspector] public UnityEvent onScoring;
 
@@ -83,7 +84,12 @@ namespace Core {
 
             _pauseScreen.onPause.AddListener(EnableMenuInputContext);
             _pauseScreen.onUnpause.AddListener(EnableGameInputContext);
+
+            onScoring.AddListener( UpdateSaveFile );
         }
+
+
+        private void UpdateSaveFile() { saveFile.CheckUpdateBestScore(score); }
 
 
         // ========================================================
@@ -91,14 +97,10 @@ namespace Core {
         // ========================================================
 
 
-        public void EnableMenuInputContext() {
-            actionsMapsHelper.ApplyContext(menuInputsContext);
-        }
+        public void EnableMenuInputContext() { actionsMapsHelper.ApplyContext(menuInputsContext); }
 
 
-        public void EnableGameInputContext() {
-            actionsMapsHelper.ApplyContext(gameplayInputsContext);
-        }
+        public void EnableGameInputContext() { actionsMapsHelper.ApplyContext(gameplayInputsContext); }
 
 
         public bool IsTesting() { return _testingMode; }

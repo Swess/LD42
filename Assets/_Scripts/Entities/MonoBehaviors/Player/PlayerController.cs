@@ -40,11 +40,14 @@ namespace Entities.Player {
 
 
         private void Update() {
-            SlowDownPlayer();
-            CheckForMovement();
             CheckForUseItem();
         }
 
+
+        private void FixedUpdate() {
+            SlowDownPlayer();
+            CheckForMovement();
+        }
 
         // ========================================================
         // ========================================================

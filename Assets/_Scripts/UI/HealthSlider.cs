@@ -13,7 +13,17 @@ namespace UI {
         private Damageable       _damageable;
 
 
-        private void Awake() { GameController.Instance.SceneController.AfterSceneLoad += OnSceneLoad; }
+        private void Awake() {
+            GameController.Instance.SceneController.AfterSceneLoad += OnSceneLoad;
+            GameController.Instance.SceneController.BeforeSceneUnload += RemoveEvents;
+        }
+
+
+        private void RemoveEvents() {
+            GameController.Instance.SceneController.AfterSceneLoad    -= OnSceneLoad;
+            GameController.Instance.SceneController.BeforeSceneUnload -= RemoveEvents;
+        }
+
 
         private void Start() {
             _core   = GameController.Instance;

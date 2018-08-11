@@ -54,6 +54,8 @@ public class Projectile : MonoBehaviour {
 
 	IEnumerator DestroyFireTile(FireLogic script) {
 		yield return new WaitForEndOfFrame();
+
+		script.AddScore();
 		script.parentTilemap.SetTile(script.tilemapPos, null);
 	}
 

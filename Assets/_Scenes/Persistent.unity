@@ -232,6 +232,12 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!224 &610550700 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 224463264917236238, guid: b50868681a57e4eaf8a6941fcd5e3a86,
+    type: 3}
+  m_PrefabInstance: {fileID: 610550699}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &239026449
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,7 +256,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &239026453
 RectTransform:
   m_ObjectHideFlags: 0
@@ -915,12 +921,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!224 &610550700 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 224463264917236238, guid: b50868681a57e4eaf8a6941fcd5e3a86,
-    type: 3}
-  m_PrefabInstance: {fileID: 610550699}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1842470336
 GameObject:
   m_ObjectHideFlags: 0
@@ -1112,9 +1112,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d3dafe889e75fe46830cf7107303348, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 0
   menuInputsContext: {fileID: 11400000, guid: 941cb3c7f9d5c2b4e8b518c11472f5f5, type: 2}
   gameplayInputsContext: {fileID: 11400000, guid: 4ea4830765954d546833290e2d2fbef4,
     type: 2}
+  saveFile: {fileID: 11400000, guid: efe4da46baae121469e7e7dd0d5b7d9b, type: 2}
+  onScoring:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   _sceneController: {fileID: 947276653}
   _uiController: {fileID: 789096113}
   _pauseScreen: {fileID: 1956427832}
@@ -1334,7 +1341,7 @@ PrefabInstance:
     - target: {fileID: 224463264917236238, guid: b50868681a57e4eaf8a6941fcd5e3a86,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 224463264917236238, guid: b50868681a57e4eaf8a6941fcd5e3a86,
         type: 3}
