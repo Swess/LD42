@@ -8,9 +8,10 @@ namespace Entities.Player {
         [PlayerIdProperty(typeof(RewiredConsts.Player))]
         public int player;
 
-        public float health            = 100f;
-        public float accelerationSpeed = 10f;
-        public float maxVelocity       = 10f;
+        public                float health            = 100f;
+        public                float accelerationSpeed = 10f;
+        public                float maxVelocity       = 10f;
+        [Range(0, 20)] public float frictionFactor    = 4f;
 
 
         private Animator    _animator;
@@ -30,12 +31,21 @@ namespace Entities.Player {
         }
 
 
-        private void Update() { CheckForMovement(); }
+        private void Update() {
+            SlowDownPlayer();
+            CheckForMovement();
+        }
 
 
         // ========================================================
         // ========================================================
         // ========================================================
+
+
+        private void SlowDownPlayer() {
+            Vector2 opposite = -_rb.velocity;
+            _rb.AddForce(opposite * frictionFactor);
+        }
 
 
         private void CheckForMovement() {
