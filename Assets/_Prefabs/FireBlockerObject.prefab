@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3312452627625949329}
   - component: {fileID: 8006431570548442219}
   m_Layer: 0
-  m_Name: FireObject
+  m_Name: FireBlockerObject
   m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -162,7 +162,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5111345802982269149}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -202,7 +202,7 @@ MonoBehaviour:
   forceRespawn: 0
   ignoreInvincibility: 0
   startEnabled: 1
-  debugDamageBox: 0
+  debugDamageBox: 1
   hittableLayers:
     serializedVersion: 2
     m_Bits: 512
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5111345802982269149}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 938e31365345d084d80b80876b434d3e, type: 3}
   m_Name: 
@@ -242,7 +242,7 @@ MonoBehaviour:
   parentTilemap: {fileID: 0}
   tilemapPos: {x: 0, y: 0, z: 0}
   spreadTile: {fileID: 11400000, guid: ce6880463d54fe742bf7dddbcb097ebe, type: 2}
-  spreadAfter: 1
+  spreadAfter: 4
   timeSoundDelay: 0.5
 --- !u!111 &8006431570548442219
 Animation:
@@ -329,7 +329,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d62cf11dab9016c459560f181123acd6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

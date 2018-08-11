@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class ItemsSpawner : MonoBehaviour {
 
     public GameObject[] itemsToSpawn;
     public float        spawnTime = 2;
+    public Tilemap      fireTilemap;
 
     public int width  = 50;
     public int height = 50;
@@ -28,13 +30,24 @@ public class ItemsSpawner : MonoBehaviour {
         if ( itemsToSpawn.Length == 0 )
             return;
 
-        Instantiate(itemsToSpawn[Random.Range(0,itemsToSpawn.Length)], pos, Quaternion.identity);
+        Instantiate(itemsToSpawn[Random.Range(0, itemsToSpawn.Length)], pos, Quaternion.identity);
     }
 
 
     private Vector2 GetRandomPos() {
-        return new Vector2(transform.position.x + Random.Range(-width / 2,  width / 2),
-                           transform.position.y + Random.Range(-height / 2, height / 2));
+        Vector2 pos = new Vector2(Mathf.FloorToInt(transform.position.x + Random.Range(-width / 2,  width / 2)),
+                                  Mathf.FloorToInt(transform.position.y + Random.Range(-height / 2, height / 2)));
+
+        Vector3Int intPos = new Vector3Int( (int)pos.x, (int)pos.y, 0 );
+
+        while ( fireTilemap && fireTilemap.GetTile(intPos) ) {
+            pos = new Vector2(Mathf.FloorToInt(transform.position.x + Random.Range(-width / 2,  width / 2)),
+                                            Mathf.FloorToInt(transform.position.y + Random.Range(-height / 2, height / 2)));
+
+            intPos = new Vector3Int( (int)pos.x, (int)pos.y, 0 );
+        }
+
+        return pos;
     }
 
 

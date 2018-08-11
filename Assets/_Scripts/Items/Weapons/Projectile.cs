@@ -44,10 +44,17 @@ public class Projectile : MonoBehaviour {
 
 	private void OnTriggerStay2D(Collider2D other) {
 		if (other.CompareTag("Fire")) {
-			// Play splash sound
-			Debug.Log(other);
-			Destroy(other.gameObject);
+			FireLogic script = other.GetComponent<FireLogic>();
+			if ( script ) {
+				StartCoroutine(DestroyFireTile(script));
+			}
 		}
+	}
+
+
+	IEnumerator DestroyFireTile(FireLogic script) {
+		yield return new WaitForEndOfFrame();
+		script.parentTilemap.SetTile(script.tilemapPos, null);
 	}
 
 

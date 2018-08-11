@@ -9,39 +9,39 @@ public class FireLogic : MonoBehaviour {
     [HideInInspector] public Vector3Int tilemapPos;
 
     public FireTile spreadTile;
-    public float    spreadAfter = 1f;
+    public float    spreadAfter    = 1f;
 
-    public float timeSoundDelay = 1f;
-    private float _timer = 0.99f;
+    public  float timeSoundDelay = 1f;
+    private float _timer         = 0.99f;
+
 
     void Start() {
         StartCoroutine(Spread());
 
         // Grab current tilemap position
-        tilemapPos = new Vector3Int(
-            Mathf.FloorToInt(transform.position.x),
-            Mathf.FloorToInt(transform.position.y),
-            Mathf.FloorToInt(transform.position.z)
-        );
+        tilemapPos = new Vector3Int(Mathf.FloorToInt(transform.position.x),
+                                    Mathf.FloorToInt(transform.position.y),
+                                    Mathf.FloorToInt(transform.position.z));
     }
 
 
     private IEnumerator Spread() {
-        yield return new WaitForSeconds(spreadAfter);
+        while ( true ) {
+            yield return new WaitForSeconds(Random.Range(spreadAfter, spreadAfter + 1f));
 
-        if ( parentTilemap ) {
-            // Spreading
-            SpreadAt(tilemapPos + new Vector3Int(1,  0,  0)); // Right
-            SpreadAt(tilemapPos + new Vector3Int(-1, 0,  0)); // Left
-            SpreadAt(tilemapPos + new Vector3Int(0,  1,  0)); // Up
-            SpreadAt(tilemapPos + new Vector3Int(0,  -1, 0)); // Down
+            if ( parentTilemap ) {
+                // Spreading
+                SpreadAt(tilemapPos + new Vector3Int(1,  0,  0)); // Right
+                SpreadAt(tilemapPos + new Vector3Int(-1, 0,  0)); // Left
+                SpreadAt(tilemapPos + new Vector3Int(0,  1,  0)); // Up
+                SpreadAt(tilemapPos + new Vector3Int(0,  -1, 0)); // Down
 
-            SpreadAt(tilemapPos + new Vector3Int(1,  1,  0)); // top-Right
-            SpreadAt(tilemapPos + new Vector3Int(-1, 1,  0)); // Top-Left
-            SpreadAt(tilemapPos + new Vector3Int(-1, -1, 0)); // Bottom-left
-            SpreadAt(tilemapPos + new Vector3Int(1,  -1, 0)); // Bottom-Right
+//                SpreadAt(tilemapPos + new Vector3Int(1,  1,  0)); // top-Right
+//                SpreadAt(tilemapPos + new Vector3Int(-1, 1,  0)); // Top-Left
+//                SpreadAt(tilemapPos + new Vector3Int(-1, -1, 0)); // Bottom-left
+//                SpreadAt(tilemapPos + new Vector3Int(1,  -1, 0)); // Bottom-Right
+            }
         }
-
     }
 
 
@@ -61,5 +61,10 @@ public class FireLogic : MonoBehaviour {
 
         _timer += Time.deltaTime;
     }
+
+
+//    void OnDestroy() {
+//        parentTilemap.SetTile(tilemapPos, null);
+//    }
 
 }
