@@ -16,9 +16,12 @@ namespace Entities.Player {
 
         public AudioSource walkingAudioSource;
 
-        private Animator    _animator;
-        private Rigidbody2D _rb;
-        private Damageable  _damageable;
+        private Animator         _animator;
+        private Rigidbody2D      _rb;
+        private Damageable       _damageable;
+        private PlayerItemHolder _holder;
+
+        private Vector3 _previousDirection;
 
         public Rewired.Player PlayerInputs { get; protected set; }
 
@@ -30,6 +33,7 @@ namespace Entities.Player {
             _animator   = GetComponent<Animator>();
             _rb         = GetComponent<Rigidbody2D>();
             _damageable = GetComponent<Damageable>();
+            _holder     = GetComponentInChildren<PlayerItemHolder>();
 
             PlayerInputs = ReInput.players.GetPlayer(player); // Get the MainPlayer's inputs
         }
@@ -38,6 +42,7 @@ namespace Entities.Player {
         private void Update() {
             SlowDownPlayer();
             CheckForMovement();
+            CheckForUseItem();
         }
 
 
@@ -60,8 +65,22 @@ namespace Entities.Player {
 
             _rb.AddForce(forceAxis * accelerationSpeed);
 
+            // Change Rotation
+            if ( forceAxis.magnitude > 0 )
+                _previousDirection = forceAxis;
+
+            float angle = Mathf.Atan2(_previousDirection.x, _previousDirection.y) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, new Vector3(0, 0, -1));
+
             if ( _rb.velocity.magnitude > maxVelocity ) {
                 _rb.velocity = _rb.velocity.normalized * maxVelocity;
+            }
+        }
+
+
+        private void CheckForUseItem() {
+            if ( PlayerInputs.GetButtonDown("UseItem") ) {
+                _holder.UseItem(GetDirection());
             }
         }
 
@@ -80,7 +99,11 @@ namespace Entities.Player {
             GameController.Instance.SceneController.FadeAndLoadScene("MainMenu");
         }
 
+
         public Damageable GetDamageable() { return _damageable; }
+
+
+        public Vector3 GetDirection() { return _rb.velocity.normalized; }
 
     }
 }

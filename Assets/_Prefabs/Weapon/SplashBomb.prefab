@@ -155,3 +155,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  projectile: {fileID: 6840787794841767532, guid: 34564746eb388a94296b6d6d4693af6c,
+    type: 3}
+  projectileSpeed: 10
