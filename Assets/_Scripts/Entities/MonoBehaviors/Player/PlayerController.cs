@@ -1,18 +1,20 @@
-﻿using Cameras;
-using Core.Types;
-using Grid;
-using Grid.Blocks;
-using UnityEngine;
+﻿using UnityEngine;
 using Rewired;
 
 namespace Entities.Player {
+    [RequireComponent(typeof(Rigidbody2D))]
     public class PlayerController : EntitiesController {
 
         [PlayerIdProperty(typeof(RewiredConsts.Player))]
         public int player;
 
-        private Animator _animator;
-        private bool     _onFinish = false; // Is this player on the finish tile.
+        public float health            = 100f;
+        public float accelerationSpeed = 10f;
+        public float maxVelocity       = 10f;
+
+
+        private Animator    _animator;
+        private Rigidbody2D _rb;
 
         public Rewired.Player PlayerInputs { get; protected set; }
 
@@ -20,8 +22,10 @@ namespace Entities.Player {
         // ========================================================
 
 
-        protected override void Awake() {
-            base.Awake();
+        protected void Awake() {
+            _animator = GetComponent<Animator>();
+            _rb       = GetComponent<Rigidbody2D>();
+
             PlayerInputs = ReInput.players.GetPlayer(player); // Get the MainPlayer's inputs
         }
 
@@ -36,39 +40,13 @@ namespace Entities.Player {
 
         private void CheckForMovement() {
             // Check here
-        }
+            Vector2 forceAxis = new Vector2(PlayerInputs.GetAxisRaw("Horizontal"), PlayerInputs.GetAxisRaw("Vertical"));
 
+            _rb.AddForce(forceAxis * accelerationSpeed);
 
-        /// <summary>
-        /// Filter the logic that determine if the block (Player in that case) can move to the next position
-        /// </summary>
-        /// <param name="state">Current state of being able to move</param>
-        /// <param name="nextBlock">The next block script</param>
-        /// <returns></returns>
-        protected override bool FilterCanMoveForward(bool state, BlockBase nextBlock) {
-            if ( nextBlock && nextBlock.gameObject.CompareTag("Player") ) {
-                if ( typeof(PlayerController) == nextBlock.GetType() ) {
-                    PlayerController otherPlayerController = (PlayerController) nextBlock;
-
-                    // Move the player to the end tile without checking if possible
-                    if ( otherPlayerController._onFinish )
-                        MoveAt(otherPlayerController.transform.position);
-
-                    return false; // Can't move normally
-                }
+            if ( _rb.velocity.magnitude > maxVelocity ) {
+                _rb.velocity = _rb.velocity.normalized * maxVelocity;
             }
-
-            return state;
-        }
-
-
-        /// <summary>
-        /// Called when thje player enter the finish tile
-        /// </summary>
-        /// <param name="state"></param>
-        public void SetFinish(bool state) {
-            // Play sound here
-            _onFinish = state;
         }
 
     }

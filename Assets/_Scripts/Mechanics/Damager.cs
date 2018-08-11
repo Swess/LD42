@@ -76,10 +76,6 @@ namespace Mechanics {
 
 
         void Start() {
-            if ( offsetBasedOnFacing && entity != null ) {
-                originalFacing = entity.Facing;
-            }
-
             canDamage = startEnabled;
         }
 
@@ -90,7 +86,7 @@ namespace Mechanics {
             Vector2 scale = transform.lossyScale;
 
             Vector2 facingOffset = Vector2.Scale(offset, scale);
-            if ( offsetBasedOnFacing && entity != null && entity.Facing != originalFacing ) {
+            if ( offsetBasedOnFacing && entity != null) {
                 facingOffset = new Vector2(-offset.x * scale.x, offset.y * scale.y);
             }
 
@@ -145,7 +141,7 @@ namespace Mechanics {
             Vector2 scale = transform.lossyScale;
 
             Vector2 facingOffset = Vector2.Scale(offset, scale);
-            if ( offsetBasedOnFacing && entity != null && entity.Facing != originalFacing ) {
+            if ( offsetBasedOnFacing && entity != null ) {
                 facingOffset = new Vector2(-offset.x * scale.x, offset.y * scale.y);
             }
 
