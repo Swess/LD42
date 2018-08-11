@@ -28,7 +28,8 @@ public class FireTile : TileBase {
             go.transform.position += Vector3.up * 0.5f + Vector3.right * 0.5f;
 
             FireLogic script = prefab.GetComponent<FireLogic>();
-            script.parentTilemap = tilemap.GetComponent<Tilemap>();
+            Tilemap tm = tilemap.GetComponent<Tilemap>();
+            script.parentTilemap = tm;
         }
 
         return base.StartUp(position, tilemap, go);

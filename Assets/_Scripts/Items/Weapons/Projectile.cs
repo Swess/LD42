@@ -44,7 +44,7 @@ public class Projectile : MonoBehaviour {
 
 	private void OnTriggerStay2D(Collider2D other) {
 		if (other.CompareTag("Fire")) {
-			FireLogic script = other.GetComponent<FireLogic>();
+			FireLogic script = other.gameObject.GetComponent<FireLogic>();
 			if ( script ) {
 				StartCoroutine(DestroyFireTile(script));
 			}

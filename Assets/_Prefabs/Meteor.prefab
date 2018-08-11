@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a661201686144b54aaea4e493f26765c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemapToSpawnOn: {fileID: 0}
   fireTile: {fileID: 11400000, guid: ce6880463d54fe742bf7dddbcb097ebe, type: 2}
+  explosionSound: {fileID: 8300000, guid: a1d9071245ad36e48b659f06d8cd6d79, type: 3}
 --- !u!1 &6892964516856745923
 GameObject:
   m_ObjectHideFlags: 0
