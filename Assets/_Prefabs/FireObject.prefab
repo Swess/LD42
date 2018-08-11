@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b8643f1b4b1e1e40b44ecad83075631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 0.5
   offset: {x: 0, y: 0}
   size: {x: 0.9, y: 0.9}
   offsetBasedOnFacing: 0

@@ -5,10 +5,12 @@ using UnityEngine.Tilemaps;
 
 public class MeteorController : MonoBehaviour {
 
-	public Tilemap tilemapToSpawnOn;
+	private Tilemap _tilemapToSpawnOn;
 	public FireTile fireTile;
 
 	void Start() {
+		_tilemapToSpawnOn = GameObject.Find("FireTilemap").GetComponent<Tilemap>();
+
 		//
 		HitTheGround();
 	}
@@ -22,14 +24,11 @@ public class MeteorController : MonoBehaviour {
 				Mathf.RoundToInt(transform.position.z)
 			);
 
-		Debug.Log( pos );
-
-		TileBase tile = tilemapToSpawnOn.GetTile( pos );
+		TileBase tile = _tilemapToSpawnOn.GetTile( pos );
 		if ( !tile ) {
 			// Spawn tile here then
+			_tilemapToSpawnOn.SetTile( pos, fireTile );
 		}
-
-		Debug.Log(tile);
 	}
 
 
