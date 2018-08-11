@@ -20,6 +20,9 @@ namespace Items.Weapons {
             objRb.velocity = owner.GetComponent<Rigidbody2D>().velocity;
             objRb.AddForce( dir * projectileSpeed, ForceMode2D.Impulse );
 
+            // Rotation randomly
+            objRb.angularVelocity = Random.Range(-500, 500);
+
             // Use once Only
             Destroy(gameObject);
         }
