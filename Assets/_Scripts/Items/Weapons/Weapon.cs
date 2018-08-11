@@ -31,6 +31,7 @@ namespace Items.Weapons {
 
         protected virtual void Start() {
             _audioSource = GetComponent<AudioSource>();
+            PlayPickupAudio();
             StartCoroutine(ActivationDelay());
         }
 

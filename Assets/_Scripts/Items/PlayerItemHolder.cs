@@ -42,28 +42,12 @@ namespace Entities.Player {
         // ========================================================
 
 
-        /// <summary>
-        /// Receive the item index to switch to in the inventory
-        /// </summary>
-        /// <param name="index"></param>
-        public void ChangeSelectedItem(int index) {
-            if ( !_quickInventory.HasItemAt(index) )
-                return;
-
-            InventoryItem selected = _quickInventory.GetCurrentItem();
-
-            // If there is something in that slot
-            if ( selected ) {
-                ChangeItem(selected.gameObject);
-            }
-        }
-
 
         /// <summary>
         /// Change/Replace the item in the item holder
         /// </summary>
         /// <param name="newItem"></param>
-        private void ChangeItem(GameObject newItem) {
+        public void ChangeItem(GameObject newItem) {
             if ( !newItem.GetComponent<Item>() ) {
                 return;
             } // Check if the gameobject is an Item
@@ -75,13 +59,12 @@ namespace Entities.Player {
             _itemScript = itemInst.GetComponent<Item>();
 
             _itemScript.SetOwner(core.Player);
-            _itemScript.PlayPickupAudio();
 
             // Place item in holder
             item.transform.position = transform.position;
 
             // Check if the item is a weapon
-            _playerAnimator.SetBool("HasWeapon", _itemScript.GetType().IsInstanceOfType( typeof(Weapon) ));
+            // _playerAnimator.SetBool("HasWeapon", _itemScript.GetType().IsInstanceOfType( typeof(Weapon) ));
         }
 
 

@@ -14,6 +14,7 @@ namespace Entities.Player {
         public                float maxVelocity       = 10f;
         [Range(0, 20)] public float frictionFactor    = 4f;
 
+        public AudioSource walkingAudioSource;
 
         private Animator    _animator;
         private Rigidbody2D _rb;
@@ -54,6 +55,8 @@ namespace Entities.Player {
         private void CheckForMovement() {
             // Check here
             Vector2 forceAxis = new Vector2(PlayerInputs.GetAxisRaw("Horizontal"), PlayerInputs.GetAxisRaw("Vertical"));
+
+            walkingAudioSource.volume = forceAxis.magnitude > 0 ? 1f : 0f;
 
             _rb.AddForce(forceAxis * accelerationSpeed);
 

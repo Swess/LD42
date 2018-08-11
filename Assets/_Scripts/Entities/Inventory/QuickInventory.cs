@@ -47,24 +47,9 @@ namespace Inventory {
 
             // Start with first item
             _currentActivePosition = 0;
-            _holder.ChangeSelectedItem(_currentActivePosition);
+            // _holder.ChangeSelectedItem(_currentActivePosition);
         }
 
-
-        private void Update() {
-            // Equip item
-            for ( int i = 1; i < INVENTORY_SIZE+1; i++ ) {
-                if ( _inputs.GetButtonDown("InvItem" + i) ) {
-                    _currentActivePosition = i - 1;
-                    _holder.ChangeSelectedItem(_currentActivePosition);
-                    onChange.Invoke();
-                }
-            }
-
-            if ( _inputs.GetButtonDown("NextItem") ) {
-                NextItem();
-            }
-        }
 
 
         // ========================================================
@@ -80,7 +65,7 @@ namespace Inventory {
 
         public void SetCurrentPosition(int index) {
             _currentActivePosition = index;
-            _holder.ChangeSelectedItem(_currentActivePosition);
+            // _holder.ChangeSelectedItem(_currentActivePosition);
             onChange.Invoke();
         }
 
@@ -124,7 +109,7 @@ namespace Inventory {
             }
 
             _currentActivePosition += 1;
-            _holder.ChangeSelectedItem(_currentActivePosition);
+//            _holder.ChangeSelectedItem(_currentActivePosition);
             onChange.Invoke();
         }
 
@@ -136,7 +121,7 @@ namespace Inventory {
         public void ReplaceCurrentItem(InventoryItem itemToAdd) {
             RemoveItem(_currentActivePosition);
             inventory[_currentActivePosition] = itemToAdd;
-            _holder.ChangeSelectedItem(_currentActivePosition);
+//            _holder.ChangeSelectedItem(_currentActivePosition);
             onChange.Invoke();
         }
 
