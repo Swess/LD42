@@ -19,9 +19,9 @@ public class MeteorController : MonoBehaviour {
 	public void HitTheGround() {
 		// Spawn Fire at pos
 		Vector3Int pos = new Vector3Int(
-				Mathf.RoundToInt(transform.position.x),
-				Mathf.RoundToInt(transform.position.y),
-				Mathf.RoundToInt(transform.position.z)
+				Mathf.FloorToInt(transform.position.x),
+				Mathf.FloorToInt(transform.position.y),
+				Mathf.FloorToInt(transform.position.z)
 			);
 
 		TileBase tile = _tilemapToSpawnOn.GetTile( pos );

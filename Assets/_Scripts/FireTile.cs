@@ -16,14 +16,21 @@ public class FireTile : TileBase {
 
         tileData.sprite = null; // Fuck that
 
-        if ( prefab ) tileData.gameObject = prefab;
+        if ( prefab )
+            tileData.gameObject = prefab;
+
     }
 
 
     public override bool StartUp(Vector3Int position, ITilemap tilemap, GameObject go) {
         // Streangly the position of gameobject starts at Left Bottom point of cell and not at it center
-        if(go)
+        if ( go ) {
             go.transform.position += Vector3.up * 0.5f + Vector3.right * 0.5f;
+
+            FireLogic script = prefab.GetComponent<FireLogic>();
+            script.parentTilemap = tilemap.GetComponent<Tilemap>();
+        }
+
         return base.StartUp(position, tilemap, go);
     }
 

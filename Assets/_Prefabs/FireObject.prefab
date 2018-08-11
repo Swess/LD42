@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5111345802982269151}
   - component: {fileID: 5111345802982269150}
+  - component: {fileID: 3312452627625949329}
   m_Layer: 0
   m_Name: FireObject
   m_TagString: Untagged
@@ -67,6 +68,22 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Mechanics.Damager+NonDamagableEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &3312452627625949329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5111345802982269149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 938e31365345d084d80b80876b434d3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentTilemap: {fileID: 0}
+  tilemapPos: {x: 0, y: 0, z: 0}
+  spreadTile: {fileID: 11400000, guid: ce6880463d54fe742bf7dddbcb097ebe, type: 2}
+  spreadAfter: 2
 --- !u!1 &5111345803434894754
 GameObject:
   m_ObjectHideFlags: 0
