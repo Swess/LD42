@@ -4867,7 +4867,7 @@ MonoBehaviour:
   parentTilemap: {fileID: 0}
   tilemapPos: {x: 0, y: 0, z: 0}
   spreadTile: {fileID: 11400000, guid: ce6880463d54fe742bf7dddbcb097ebe, type: 2}
-  spreadAfter: 1.8
+  spreadAfter: 1.4
   timeSoundDelay: 0.5
 --- !u!111 &8006431570548442219
 Animation:
