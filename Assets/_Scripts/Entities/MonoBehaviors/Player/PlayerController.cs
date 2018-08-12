@@ -39,6 +39,11 @@ namespace Entities.Player {
         }
 
 
+        private void Start() {
+            GameController.Instance.actionsMapsHelper.EnableMap("Gameplay");
+        }
+
+
         private void Update() {
             CheckForUseItem();
         }

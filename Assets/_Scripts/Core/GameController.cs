@@ -2,6 +2,7 @@ using System;
 using Core.Inputs;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 namespace Core {
@@ -99,9 +100,7 @@ namespace Core {
 
         public void EnableMenuInputContext() { actionsMapsHelper.ApplyContext(menuInputsContext); }
 
-
         public void EnableGameInputContext() { actionsMapsHelper.ApplyContext(gameplayInputsContext); }
-
 
         public bool IsTesting() { return _testingMode; }
 
