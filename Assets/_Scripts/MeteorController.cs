@@ -13,9 +13,6 @@ public class MeteorController : MonoBehaviour {
 
     void Start() {
         _tilemapToSpawnOn = GameObject.Find("FireTilemap").GetComponent<Tilemap>();
-
-        //
-        HitTheGround();
     }
 
 
@@ -31,6 +28,9 @@ public class MeteorController : MonoBehaviour {
             _tilemapToSpawnOn.SetTile(pos, fireTile);
             GameController.Instance.gameObject.GetComponent<AudioSource>().PlayOneShot(explosionSound, 0.4f);
         }
+
+        // Destroy self
+        Destroy(gameObject);
     }
 
 }

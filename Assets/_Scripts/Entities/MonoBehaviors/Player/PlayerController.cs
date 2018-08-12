@@ -65,6 +65,11 @@ namespace Entities.Player {
             Vector2 forceAxis = new Vector2(PlayerInputs.GetAxisRaw("Horizontal"), PlayerInputs.GetAxisRaw("Vertical"));
 
             walkingAudioSource.volume = forceAxis.magnitude > 0 ? 1f : 0f;
+            Animation[] animations = GetComponentsInChildren<Animation>();
+            for (int i=0; i<animations.Length; i++) {
+                animations[i].enabled = forceAxis.magnitude > 0;
+            }
+
 
             _rb.AddForce(forceAxis * accelerationSpeed);
 
@@ -95,8 +100,6 @@ namespace Entities.Player {
         /// <param name="damageable"></param>
         public void OnDie(Damager damager, Damageable damageable) {
             GameController.Instance.actionsMapsHelper.DisableMap("Gameplay");
-
-            // Trigger animation here
 
             // After animation :
             GameController.Instance.SceneController.FadeAndLoadScene("MainMenu");
