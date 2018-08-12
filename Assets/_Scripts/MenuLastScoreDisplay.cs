@@ -4,12 +4,12 @@ using Core;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MenuBestScoreDisplay : MonoBehaviour {
+public class MenuLastScoreDisplay : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
 		Text text = GetComponent<Text>();
-		text.text = "Best Score : " + GameController.Instance.saveFile.bestScore;
+		text.text = "Last Score : " + GameController.Instance.saveFile.lastScore;
 	}
 
 }

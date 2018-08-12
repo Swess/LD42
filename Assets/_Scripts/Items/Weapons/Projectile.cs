@@ -26,7 +26,10 @@ public class Projectile : MonoBehaviour {
 		} else if(!_hasHit) {
 			Hit();
 		}
+	}
 
+
+	private void FixedUpdate() {
 		SlowDown();
 	}
 
@@ -47,8 +50,10 @@ public class Projectile : MonoBehaviour {
 	private void OnTriggerStay2D(Collider2D other) {
 		if (other.CompareTag("Fire")) {
 			FireLogic script = other.gameObject.GetComponent<FireLogic>();
-			if ( script ) {
+			if ( script && script.parentTilemap ) {
 				StartCoroutine(DestroyFireTile(script));
+			} else {
+				Destroy(other);
 			}
 		}
 	}
@@ -58,7 +63,9 @@ public class Projectile : MonoBehaviour {
 		yield return new WaitForEndOfFrame();
 
 		script.AddScore();
-		script.parentTilemap.SetTile(script.tilemapPos, null);
+
+		if(script.parentTilemap)
+			script.parentTilemap.SetTile(script.tilemapPos, null);
 	}
 
 

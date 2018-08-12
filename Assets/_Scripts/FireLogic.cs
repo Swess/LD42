@@ -11,19 +11,38 @@ public class FireLogic : MonoBehaviour {
     [HideInInspector] public Vector3Int tilemapPos;
 
     public FireTile spreadTile;
-    public float    spreadAfter    = 1f;
+    public float    spreadAfter = 1f;
 
-    public  float timeSoundDelay = 1f;
-    private float _timer         = 0.99f;
+    public  float    timeSoundDelay = 1f;
+
+    public GameObject particleObject;
+    private float    _timer         = 0.99f;
+    private Renderer _rend;
+    private Light    _light;
+
 
 
     void Start() {
+        _rend = GetComponentInChildren<Renderer>();
+        _light = GetComponentInChildren<Light>();
+
         StartCoroutine(Spread());
 
         // Grab current tilemap position
         tilemapPos = new Vector3Int(Mathf.FloorToInt(transform.position.x),
                                     Mathf.FloorToInt(transform.position.y),
                                     Mathf.FloorToInt(transform.position.z));
+    }
+
+
+    void Update() {
+        if ( !_light )
+            return;
+
+        _light.enabled = _rend.isVisible;
+
+        if(particleObject)
+            particleObject.SetActive(_rend.isVisible);
     }
 
 
