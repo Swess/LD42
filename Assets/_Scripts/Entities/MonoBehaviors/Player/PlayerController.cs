@@ -1,7 +1,9 @@
-﻿using Core;
+﻿using System.Collections;
+using Core;
 using Mechanics;
 using UnityEngine;
 using Rewired;
+using UnityEngine.Rendering.PostProcessing;
 
 namespace Entities.Player {
     [RequireComponent(typeof(Rigidbody2D))]
@@ -23,6 +25,8 @@ namespace Entities.Player {
 
         private Vector3 _previousDirection;
 
+        public PostProcessVolume ppVolume;
+
         public Rewired.Player PlayerInputs { get; protected set; }
 
         // ========================================================
@@ -39,20 +43,17 @@ namespace Entities.Player {
         }
 
 
-        private void Start() {
-            GameController.Instance.actionsMapsHelper.EnableMap("Gameplay");
-        }
+        private void Start() { GameController.Instance.actionsMapsHelper.EnableMap("Gameplay"); }
 
 
-        private void Update() {
-            CheckForUseItem();
-        }
+        private void Update() { CheckForUseItem(); }
 
 
         private void FixedUpdate() {
             SlowDownPlayer();
             CheckForMovement();
         }
+
 
         // ========================================================
         // ========================================================
@@ -71,7 +72,7 @@ namespace Entities.Player {
 
             walkingAudioSource.volume = forceAxis.magnitude > 0 ? 1f : 0f;
             Animation[] animations = GetComponentsInChildren<Animation>();
-            for (int i=0; i<animations.Length; i++) {
+            for ( int i = 0; i < animations.Length; i++ ) {
                 animations[i].enabled = forceAxis.magnitude > 0;
             }
 
@@ -115,6 +116,25 @@ namespace Entities.Player {
 
 
         public Vector3 GetDirection() { return _rb.velocity.normalized; }
+
+
+        public void DamageCameraFx(Damager damager, Damageable damageable) {
+            ppVolume.enabled = true;
+            StartCoroutine(DestroyPPVolume());
+        }
+
+
+        IEnumerator DestroyPPVolume() {
+            float counter = 0f;
+            float fxTime = 0.4f;
+
+            while ( counter < fxTime ) {
+                counter += Time.deltaTime;
+                yield return new WaitForEndOfFrame();
+            }
+
+            ppVolume.enabled = false;
+        }
 
     }
 }

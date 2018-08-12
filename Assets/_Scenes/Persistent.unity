@@ -498,6 +498,12 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!224 &610550700 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 224463264917236238, guid: b50868681a57e4eaf8a6941fcd5e3a86,
+    type: 3}
+  m_PrefabInstance: {fileID: 610550699}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &730674165
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,12 +715,6 @@ MonoBehaviour:
   faderCanvasGroup: {fileID: 2069165265}
   fadeDuration: 1
   startingSceneName: MainMenu
---- !u!224 &610550700 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 224463264917236238, guid: b50868681a57e4eaf8a6941fcd5e3a86,
-    type: 3}
-  m_PrefabInstance: {fileID: 610550699}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1064664651
 GameObject:
   m_ObjectHideFlags: 0
