@@ -261,3 +261,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBeforeImpact: 0.3
   frictionFactor: 1.5
+  instanciateOnImpact: {fileID: 6881811110784392508, guid: 7fabc42e3b751994fa24eb3c0ba0fcf2,
+    type: 3}

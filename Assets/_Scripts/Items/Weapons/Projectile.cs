@@ -7,6 +7,8 @@ public class Projectile : MonoBehaviour {
 	public float timeBeforeImpact = 1f;
 	public float frictionFactor = 2f;
 
+	public GameObject instanciateOnImpact;
+
 	private bool _hasHit = false;
 	private Rigidbody2D _rb;
 	private AudioSource _audio;
@@ -62,6 +64,11 @@ public class Projectile : MonoBehaviour {
 
 	IEnumerator DestroyAfterHit() {
 		yield return new WaitForSeconds(0.1f);
+
+		if (instanciateOnImpact) {
+			// Particles ?? Something else ??
+			Instantiate(instanciateOnImpact, transform.position, Quaternion.identity);
+		}
 		Destroy(gameObject);
 	}
 

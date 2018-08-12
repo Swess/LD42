@@ -12394,7 +12394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsToSpawn:
   - {fileID: 3561355967862327755, guid: 012b49e88a4cfdd4e9d0b61721150a9d, type: 3}
-  spawnTime: 1
+  spawnTime: 2
   fireTilemap: {fileID: 5513260}
   width: 40
   height: 25
