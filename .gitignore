@@ -9,6 +9,13 @@ trustExitCode = false
 cmd = 'C:\Program Files\Unity\Editor\Data\Tools\UnityYAMLMerge.exe' merge -p "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
 
 
+# =================== #
+# Assets Source Files #
+# =================== #
+_[Ss]ource[Ff]iles/
+[Ss]ource[Ff]iles/
+
+
 # =============== #
 # Unity generated #
 # =============== #
